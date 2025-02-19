@@ -37,3 +37,11 @@ document.getElementById('download').addEventListener('click', (event) => {
         hideDownload();
     }
 });
+
+
+function downloadSoftware(os) {
+    // Here we use the same download link regardless of OS for simplicity
+    // In a real scenario, you might want to adjust this based on 'os'
+    window.location.href = '/english-bangla.exe';
+    hideDownload();
+}
