@@ -1,23 +1,3 @@
-function downloadSoftware() {
-    alert('Redirecting to download page...'); // Here you would actually redirect or open a download dialog
-    // Example: window.location.href = 'download-link.html';
-}
-
-// Add more interactivity as needed. For instance:
-document.addEventListener('DOMContentLoaded', (event) => {
-    const features = document.querySelectorAll('.feature');
-    features.forEach(feature => {
-        feature.addEventListener('mouseover', () => {
-            feature.style.transform = 'scale(1.05)';
-        });
-        feature.addEventListener('mouseout', () => {
-            feature.style.transform = 'scale(1)';
-        });
-    });
-});
-
-// ... Previous JS ...
-
 function showDownload() {
     document.getElementById('download').classList.remove('hidden');
 }
@@ -27,21 +7,41 @@ function hideDownload() {
 }
 
 function downloadSoftware(os) {
-    alert(`Downloading for ${os}...`); // Placeholder for actual download logic
-    // Here you would implement the actual download functionality, perhaps opening a new tab with the download link
+    alert(`Downloading for ${os}...`);
     hideDownload();
 }
 
-document.getElementById('download').addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-        hideDownload();
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    const features = document.querySelectorAll('.feature');
+    features.forEach(feature => {
+        feature.addEventListener('mouseover', () => {
+            feature.style.transform = 'scale(1.05)';
+        });
+
+        feature.addEventListener('mouseout', () => {
+            feature.style.transform = 'scale(1)';
+        });
+    });
+
+    // Close download modal when clicking outside content
+    document.getElementById('download').addEventListener('click', (event) => {
+        if (event.target === event.currentTarget) {
+            hideDownload();
+        }
+    });
 });
 
+// Smooth Scroll for Features & Testimonials
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('#features, #testimonials');
+    sections.forEach(section => {
+        if (isElementInViewport(section)) {
+            section.classList.add('in-view');
+        }
+    });
+});
 
-function downloadSoftware(os) {
-    // Here we use the same download link regardless of OS for simplicity
-    // In a real scenario, you might want to adjust this based on 'os'
-    window.location.href = '/english-bangla.exe';
-    hideDownload();
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight;
 }
