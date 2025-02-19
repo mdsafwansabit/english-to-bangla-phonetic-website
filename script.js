@@ -45,3 +45,15 @@ function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return rect.top >= 0 && rect.left >= 0 && rect.bottom <= window.innerHeight;
 }
+
+
+// ... Previous JS ...
+
+function downloadSoftware(os) {
+    // Here we use the same download link regardless of OS for simplicity
+    // In a real scenario, you might want to adjust this based on 'os'
+    window.location.href = '/english-bangla.exe';
+    hideDownload();
+}
+
+// ... Rest of the script ...
